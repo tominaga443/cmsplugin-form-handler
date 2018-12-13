@@ -85,7 +85,7 @@ class FormPluginBase(CMSPluginBase):
             kwargs = self.get_form_kwargs(request, instance)
             kwargs.update({
                 'source_url': source_url,
-                'plugin_instance': instance,
+                'instance': instance,
             })
 
             # HACK: Add ModelForm instance to keyword args

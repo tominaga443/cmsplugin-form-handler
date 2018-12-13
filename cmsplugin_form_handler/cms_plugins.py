@@ -89,7 +89,7 @@ class FormPluginBase(CMSPluginBase):
             })
             if 'cmsplugin_form_model_instance' in context:
                 kwargs.update({'instance': context['cmsplugin_form_model_instance']})
-            if data:
+            elif data:
                 kwargs.update({'data': data})
             context['cmsplugin_form'] = form_class(**kwargs)
         return context

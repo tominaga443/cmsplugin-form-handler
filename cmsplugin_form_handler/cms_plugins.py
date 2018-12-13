@@ -85,7 +85,7 @@ class FormPluginBase(CMSPluginBase):
             kwargs = self.get_form_kwargs(request, instance)
             kwargs.update({
                 'source_url': source_url,
-                'instance': instance,
+                'plugin_instance': instance,
             })
             if data:
                 kwargs.update({'data': data})

@@ -58,7 +58,7 @@ class FormPluginBase(CMSPluginBase):
         """
         form.save()
 
-    def render(self, context, instance, placeholder, model_instance=None):
+    def render(self, context, instance, placeholder):
         context = super(FormPluginBase, self).render(
             context, instance, placeholder)
         request = context.get('request')
@@ -87,8 +87,8 @@ class FormPluginBase(CMSPluginBase):
                 'source_url': source_url,
                 'plugin_instance': instance,
             })
-            if model_instance:
-                kwargs.update({'instance': model_instance})
+            if 'cmsplugin_form_model_instance' in context:
+                kwargs.update({'instance': context['cmsplugin_form_model_instance']})
             if data:
                 kwargs.update({'data': data})
             context['cmsplugin_form'] = form_class(**kwargs)

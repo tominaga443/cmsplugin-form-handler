@@ -87,8 +87,10 @@ class FormPluginBase(CMSPluginBase):
                 'source_url': source_url,
                 'plugin_instance': instance,
             })
+
+            # HACK: Add ModelForm instance to keyword args
             if 'cmsplugin_form_model_instance' in context:
-                kwargs.update({'instance': context['cmsplugin_form_model_instance']})
+                kwargs.update({'cmsplugin_form_model_instance': context['cmsplugin_form_model_instance']})
             elif data:
                 kwargs.update({'data': data})
             context['cmsplugin_form'] = form_class(**kwargs)
